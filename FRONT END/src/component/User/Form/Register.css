@@ -1,0 +1,21 @@
+.more_infor {
+    display: flex;
+}
+
+.more_infor .age_form {
+    line-height: 50px;
+    width: 30%;
+    text-align: center;
+}
+
+.more_infor .age_form span {
+    font-size: 13px;
+    color: #fff;
+    padding: 2px;
+}
+
+.more_infor .age_form input {
+    width: 40%;
+    margin-left: 14px;
+    outline: none;
+}
