@@ -7,11 +7,11 @@ const pool = mysql.createPool({
   password: process.env.DB_PASS || '',
   database: process.env.DB_NAME || '',
 });
-
 // truy van
 const queryRow = async (sql, data = undefined) => {
   const [row] = await pool.promise().query(sql, data);
-  return row[0];
+  if (row.length <= 1) return row[0];
+  return row;
 };
 
 module.exports = queryRow;

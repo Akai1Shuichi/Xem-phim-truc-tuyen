@@ -1,0 +1,30 @@
+
+
+.footer_container {
+    margin: 40px 30px;
+    color: #8b8b8b;
+}
+
+.footer_title {
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+.footer_content_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}   
+
+.footer_content {
+    list-style: none;
+    padding-right: 83px;
+}
+
+.footer_item {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+

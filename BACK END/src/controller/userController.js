@@ -147,7 +147,21 @@ const userController = {
     try {
       const sql = 'DELETE FROM user WHERE id = ?';
       await queryRow(sql, req.user.id);
-      res.status(201).send({ message: 'Delete Successfully!!!' });
+      res.status(201).send({ message: 'Delete Successfully !!!' });
+    } catch (e) {
+      res.status(400).send({ message: e.message });
+    }
+  },
+
+  getDetails: async (req, res) => {
+    try {
+      const sql = 'SELECT * FROM user';
+      const user = await queryRow(sql);
+
+      res.status(201).send(user);
+      // res
+      //   .status(201)
+      //   .send({ message: 'Insert successfully !!!!', token: 'tokenfake' });
     } catch (e) {
       res.status(400).send({ message: e.message });
     }

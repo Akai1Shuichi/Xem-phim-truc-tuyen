@@ -1,4 +1,5 @@
 import {React, useState} from "react";
+import Button from "../../UI/button/button";
 async function loginUser(user) {
   return fetch('http://localhost:8080/login', {
     method: 'POST',
@@ -50,9 +51,7 @@ const UserFormLogin = ({setToken, handleClick}) => {
               </label>
             </div>
 
-            <button className="btnLogin">
-              Đăng nhập
-            </button>
+            <Button index={1} text='Đăng nhập' full/>
 
             <div className="login_form_help">
               <div className="member">
@@ -67,7 +66,7 @@ const UserFormLogin = ({setToken, handleClick}) => {
         </div>
         <div className="home_login_form_footer">
           <div className="home_login_signNow ">
-            Bạn mới tham gia Netflix?
+            Bạn mới tham gia GVBT ?
             <a
               onClick={() => handleClick()}
             > Đăng ký ngay</a>

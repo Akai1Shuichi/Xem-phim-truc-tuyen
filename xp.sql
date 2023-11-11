@@ -3,7 +3,7 @@ use xem_phim;
 
 drop table `token` ;
 drop table `user`;
-drop table `movie`;
+
 
 Create table `user` (
   `id` int(11) not null auto_increment,
@@ -23,21 +23,24 @@ Create table `token` (
     FOREIGN KEY (`id_user`)
       REFERENCES `user`(`id`)
 );
-
 -- insert
-insert into `user` values(1,'toan',22,0867057221,'toancccccccc@gmail.com','trongtoan@');
-delete from `user` where id = 1
--- Create table `movie` (
---    `id_movie` int(11) not null auto_increment,
---    `id_user` int(11),
---    `name_movie` varchar(255) default null,
---    `title_movie` varchar(255) default null,
---    `poster` varchar(255) default null,
---    `id_video` varchar(255) default null,
---    primary key (`id_movie`),
---    FOREIGN KEY (`id_user`)
---     REFERENCES `user`(`id`)
--- );
+insert into `user` values(1,'toan',22,'0867057221','nttoan2511@gmail.com','toan');
+delete from `user` where id = 1;
+
+
+drop table `movie`;
+Create table `movie` (
+   `id_movie` varchar(255) not null unique,
+   `id_user` int(11),
+   `name_movie` varchar(255) default null,
+   `poster` varchar(255) default null,
+   primary key (`id_movie`),
+   FOREIGN KEY (`id_user`)
+    REFERENCES `user`(`id`)
+);
+
+select *  from `movie` where id_user = 2
+
 -- insert into `movie` values(2,1,'t','t','t','t');
 
  

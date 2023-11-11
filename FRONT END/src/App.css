@@ -4,6 +4,17 @@
     box-sizing: inherit;
 }
 
+body {
+    background-color: #141414;
+  }
+  
+:root {
+    --bg-theme: #141414;
+    --bg-primary: #ff2f36;
+    --primary-text-white: #fefefe;
+    --secondary-text-grey: #232323;
+}
+
 html {
     font-size: 62.5%;
     line-height: 1.6rem;
@@ -41,6 +52,7 @@ html {
 }
 
 .header__home-logo {
+    width: 230px;
     margin-left: 3%;
     fill: #e50914;
     display: inline-block;
@@ -137,21 +149,6 @@ html {
     padding: 0.75rem 1.33333333em;
     position: relative;
 } */
-
-.login_form .btnLogin {
-    border-radius: 4px;
-    width: 100%;
-    color: #fff;
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin: 24px 0 12px;
-    padding: 16px;
-    background-color: #e50914;
-
-}
-
 .login_form_help {
     font-size: 13px;
     color: #b3b3b3;
@@ -197,4 +194,23 @@ html {
 
 .home_login_signNow a:hover {
     text-decoration: underline;
+}
+
+/* Main page */
+
+.movie-page-container,
+.infor-user-page-container,
+.home_main_container {
+    background-color: var(--bg-theme);
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

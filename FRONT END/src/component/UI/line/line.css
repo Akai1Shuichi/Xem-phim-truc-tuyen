@@ -1,0 +1,5 @@
+.line {
+    background-color: var(--secondary-text-grey);
+    border: none;
+    margin-bottom: 47px;
+}

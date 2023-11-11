@@ -1,6 +1,6 @@
 import {React,useState} from "react";
 import './Register.css'
-let savedUser = []
+import Button from "../../UI/button/button";
 
 async function RegisterUser(user) {
   return fetch('http://localhost:8080/register', {
@@ -18,7 +18,6 @@ const UserFormRegister = (props) => {
   const [mailInput,setMailInput] = useState('')
   const [passInput,setPassInput] = useState('')
   const [passReInput,setPassReInput] = useState('')
-  const [user,setUser] = useState(savedUser)
 
   const handleRegisterSubmit = async e => {
     e.preventDefault();
@@ -29,13 +28,7 @@ const UserFormRegister = (props) => {
       email: mailInput,
       password: passInput,
     }
-    const response = await RegisterUser(userInput);
-    console.log(response)
-  }
-  const addUser = (u) => {
-    const list = [...user,u];
-    setUser(list)
-    savedUser = list
+    await RegisterUser(userInput);
   }
 
     return (
@@ -116,9 +109,7 @@ const UserFormRegister = (props) => {
             }>
               Đăng ký
             </button> */}
-            <button className="btnLogin">
-              Đăng ký
-            </button>
+            <Button index={1} text='Đăng ký' full/>
 
             <div className="login_form_help">
               <div className="member">

@@ -1,8 +1,8 @@
-import { React, useState } from 'react';
-import Logo from '../../component/UI/Logo';
+import React, { useState } from 'react';
 // import HomeLogin from "./HomeLogin";
 import UserFormLogin from '../../component/User/Form/Login';
 import UserFormRegister from '../../component/User/Form/Register';
+import logoPath from '../../assets/logo.png';
 const LoginPage = ({ setToken }) => {
   const [btnLogin, setBtnLogin] = useState(true);
   const clickBtnRegister = () => {
@@ -14,12 +14,14 @@ const LoginPage = ({ setToken }) => {
       <div className="home_login_background">
         <img
           className="home_login_img"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/ab180a27-b661-44d7-a6d9-940cb32f2f4a/aa5a0cda-c48e-443d-a54b-ed77fd14340a/VN-vi-20231009-popsignuptwoweeks-perspective_alpha_website_small.jpg"
-          srcSet="https://assets.nflxext.com/ffe/siteui/vlv3/ab180a27-b661-44d7-a6d9-940cb32f2f4a/aa5a0cda-c48e-443d-a54b-ed77fd14340a/VN-vi-20231009-popsignuptwoweeks-perspective_alpha_website_small.jpg 1000w, https://assets.nflxext.com/ffe/siteui/vlv3/ab180a27-b661-44d7-a6d9-940cb32f2f4a/aa5a0cda-c48e-443d-a54b-ed77fd14340a/VN-vi-20231009-popsignuptwoweeks-perspective_alpha_website_medium.jpg 1500w, https://assets.nflxext.com/ffe/siteui/vlv3/ab180a27-b661-44d7-a6d9-940cb32f2f4a/aa5a0cda-c48e-443d-a54b-ed77fd14340a/VN-vi-20231009-popsignuptwoweeks-perspective_alpha_website_large.jpg 1800w"
+          src="https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/61d05f82-7ea2-4945-b81e-39eb2ab246d8/VN-vi-20231030-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          srcset="https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/61d05f82-7ea2-4945-b81e-39eb2ab246d8/VN-vi-20231030-popsignuptwoweeks-perspective_alpha_website_small.jpg 1000w, https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/61d05f82-7ea2-4945-b81e-39eb2ab246d8/VN-vi-20231030-popsignuptwoweeks-perspective_alpha_website_medium.jpg 1500w, https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/61d05f82-7ea2-4945-b81e-39eb2ab246d8/VN-vi-20231030-popsignuptwoweeks-perspective_alpha_website_large.jpg 1800w"
           alt="background_img"
         ></img>
       </div>
-      <Logo />
+      <div className="header__home">
+        <img src={logoPath} className="header__home-logo" alt="logo" />
+      </div>
       {btnLogin ? (
         <UserFormLogin setToken={setToken} handleClick={clickBtnRegister} />
       ) : (

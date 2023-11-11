@@ -1,0 +1,135 @@
+.movie-container {
+    padding: 65px 30px 0;;
+}
+
+.movie-title {
+    padding-top: 16px;
+}
+
+.movie-title i {
+    cursor: pointer;
+    color: var(--bg-primary);
+    font-size: 30px;
+    margin: 0 0 16px 30px;
+}
+
+.movie-content-container {
+    padding: 0 16px;
+    color: var(--primary-text-white);
+}
+
+.movie-content-container .movie_item_container {
+    margin-left: 0px;
+}
+
+.movie-content-video {
+    margin: -16px;
+    display: flex;
+    justify-content: center;
+    height: 650px;
+    background-color: black;
+}
+
+.movie-content-title {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-content-about,
+.movie-content-actor,
+.movie_item_container {
+    margin-top: 30px;
+}
+
+.movie-content-title-info h1,
+.movie-content-about-title,
+.movie-content-actor h1 {
+    font-size: 24px;
+    padding-top: 16px;
+}
+
+.movie-content-rate {
+    padding-top: 16px;
+}
+
+.movie-content-date,
+.movie-content-time,
+.movie-content-rate-content {
+    font-size: 16px;
+    margin-left: 16px;
+}
+
+.movie-content-title-info i {
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 16px;
+}
+
+.movie-content-rate i {
+    font-size: 21px;
+    margin-left: 16px;
+}
+
+.movie-content-rate i.loved {
+    color: #ffce3e;;
+}
+
+#liked.red {
+    color: var(--bg-primary);
+}
+
+.movie-content-genres {
+    margin: 16px 0 0 12px;
+    font-size: 16px;
+}
+
+.movie-content-genres span:not(:first-child) {
+    margin-right: 10px;
+}
+
+.movie-content-about-details {
+    width: 81%;
+    margin: 24px 0 0 12px;
+    font-size: 17px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.movie-content-actor-slider {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.movie-content-actor-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-content-slider-item {
+    display: inline-block;
+    margin-right: 80px;
+}
+.movie-content-img-wrapper {
+    margin-top: 20px;
+    height: 180px;
+    width: 180px;
+}
+
+.movie-content-slider-item img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.movie-content-slider-item p {
+    line-height: 1.5;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 18px;
+    padding-bottom: 10px;
+}
+
