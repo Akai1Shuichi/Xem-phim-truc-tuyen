@@ -1,37 +1,41 @@
-import {React, useState} from "react";
-import Button from "../../UI/button/button";
+import { React, useState } from 'react';
+import Button from '../../UI/button/button';
 async function loginUser(user) {
   return fetch('http://localhost:8080/login', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(user)
-  }).then((data) => data.json())
+    body: JSON.stringify(user),
+  }).then((data) => data.json());
 }
-const UserFormLogin = ({setToken, handleClick}) => {
-  const [mailInput,setMailInput] = useState('')
-  const [passInput,setPassInput] = useState('')
-  const handleSubmit = async e => {
-      e.preventDefault()
-      const userInput = {
-        email: mailInput,
-        password: passInput,
-      }
-      const response = await loginUser(userInput);
-      const {token} = response
-      setToken({token})
-      }
-    return(
+const UserFormLogin = ({ setToken, handleClick }) => {
+  const [mailInput, setMailInput] = useState('');
+  const [passInput, setPassInput] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userInput = {
+      email: mailInput,
+      password: passInput,
+    };
+    const response = await loginUser(userInput);
+    // console.log(response)
+    const { token } = response;
+    setToken({ token });
+  };
+  return (
     <div className="home_login_body">
       <div className="home_login_content">
         <div className="home_login_form">
           <h1>Đăng nhập</h1>
           <form className="login_form" onSubmit={handleSubmit}>
             <div className="input_email login_form_input">
-              <input type="text" className="form_input" id="form_email"
-              value={mailInput}
-              onInput={(e) => setMailInput(e.target.value)}
+              <input
+                type="text"
+                className="form_input"
+                id="form_email"
+                value={mailInput}
+                onInput={(e) => setMailInput(e.target.value)}
               ></input>
               <label for="form_email" className="placeLabel">
                 Email hoặc số điện thoại
@@ -51,7 +55,7 @@ const UserFormLogin = ({setToken, handleClick}) => {
               </label>
             </div>
 
-            <Button index={1} text='Đăng nhập' full/>
+            <Button index={1} text="Đăng nhập" full />
 
             <div className="login_form_help">
               <div className="member">
@@ -67,15 +71,12 @@ const UserFormLogin = ({setToken, handleClick}) => {
         <div className="home_login_form_footer">
           <div className="home_login_signNow ">
             Bạn mới tham gia GVBT ?
-            <a
-              onClick={() => handleClick()}
-            > Đăng ký ngay</a>
-            .
+            <a onClick={() => handleClick()}> Đăng ký ngay</a>.
           </div>
         </div>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default UserFormLogin
+export default UserFormLogin;

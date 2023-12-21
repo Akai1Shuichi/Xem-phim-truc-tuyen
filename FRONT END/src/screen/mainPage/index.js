@@ -26,12 +26,9 @@ const MainPage = () => {
           title="Phổ biến hiện nay"
           requestUrl={requests.fetchPopular}
         />
-        <MovieList
-          title="Kênh Truyền Hình"
-          requestUrl={requests.fetchTVShows}
-        />
         <MovieList title="Phim Hài" requestUrl={requests.fetchComedy} />
         <MovieList title="Phim Hành Động" requestUrl={requests.fetchAction} />
+        <MovieList title="Phim Kinh Dị" requestUrl={requests.fetchHorror} />
       </div>
 
       <Footer />

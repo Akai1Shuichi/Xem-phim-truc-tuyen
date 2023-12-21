@@ -1,25 +1,25 @@
-import {React,useState} from "react";
-import './Register.css'
-import Button from "../../UI/button/button";
+import React, { useState } from 'react';
+import './Register.css';
+import Button from '../../UI/button/button';
 
 async function RegisterUser(user) {
   return fetch('http://localhost:8080/register', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(user)
-  }).then((data) => data.json())
+    body: JSON.stringify(user),
+  }).then((data) => data.json());
 }
 const UserFormRegister = (props) => {
-  const [nameInput,setNameInput] = useState('')
-  const [ageInput,setAgeInput] = useState(20)
-  const [phoneInput,setPhoneInput] = useState('')
-  const [mailInput,setMailInput] = useState('')
-  const [passInput,setPassInput] = useState('')
-  const [passReInput,setPassReInput] = useState('')
+  const [nameInput, setNameInput] = useState('');
+  const [ageInput, setAgeInput] = useState(20);
+  const [phoneInput, setPhoneInput] = useState('');
+  const [mailInput, setMailInput] = useState('');
+  const [passInput, setPassInput] = useState('');
+  const [passReInput, setPassReInput] = useState('');
 
-  const handleRegisterSubmit = async e => {
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     const userInput = {
       name: nameInput,
@@ -27,20 +27,25 @@ const UserFormRegister = (props) => {
       phone: phoneInput,
       email: mailInput,
       password: passInput,
-    }
-    await RegisterUser(userInput);
-  }
+    };
+    const response = await RegisterUser(userInput);
 
-    return (
-        <div className="home_login_body">
+    // console.log(response)
+  };
+
+  return (
+    <div className="home_login_body">
       <div className="home_login_content">
         <div className="home_login_form">
           <h1>Đăng ký</h1>
           <form className="login_form" onSubmit={handleRegisterSubmit}>
-          <div className="input_name login_form_input">
-              <input type="text" className="form_input" id="form_name"
-              value={nameInput}
-              onInput={(e) => setNameInput(e.target.value)}
+            <div className="input_name login_form_input">
+              <input
+                type="text"
+                className="form_input"
+                id="form_name"
+                value={nameInput}
+                onInput={(e) => setNameInput(e.target.value)}
               ></input>
               <label for="form_name" className="placeLabel">
                 Name
@@ -48,9 +53,12 @@ const UserFormRegister = (props) => {
             </div>
 
             <div className="input_email login_form_input">
-              <input type="text" className="form_input" id="form_email"
-              value={mailInput}
-              onInput={(e) => setMailInput(e.target.value)}
+              <input
+                type="text"
+                className="form_input"
+                id="form_email"
+                value={mailInput}
+                onInput={(e) => setMailInput(e.target.value)}
               ></input>
               <label for="form_email" className="placeLabel">
                 Email
@@ -59,9 +67,12 @@ const UserFormRegister = (props) => {
 
             <div className="more_infor">
               <div className="input_email login_form_input">
-                <input type="text" className="form_input" id="form_phone"
-                value={phoneInput}
-                onInput={(e) => setPhoneInput(e.target.value)}
+                <input
+                  type="text"
+                  className="form_input"
+                  id="form_phone"
+                  value={phoneInput}
+                  onInput={(e) => setPhoneInput(e.target.value)}
                 ></input>
                 <label for="form_phone" className="placeLabel">
                   Phone
@@ -69,12 +80,15 @@ const UserFormRegister = (props) => {
               </div>
               <div className="age_form">
                 <span>Age :</span>
-                <input type="number" value={ageInput} min="0"
-                onInput={(e) => setAgeInput(Number(e.target.value))}
+                <input
+                  type="number"
+                  value={ageInput}
+                  min="0"
+                  onInput={(e) => setAgeInput(Number(e.target.value))}
                 />
               </div>
             </div>
-            
+
             <div className="input_password login_form_input">
               <input
                 type="password"
@@ -89,16 +103,16 @@ const UserFormRegister = (props) => {
             </div>
 
             <div className="input_password login_form_input ">
-                <input
-                  type="password"
-                  className="form_input"
-                  id="form_password_repeat"
-                  value={passReInput}
-                  onInput={(e) => setPassReInput(e.target.value)}
-                ></input>
-                <label for="form_password_repeat" className="placeLabel">
-                  Nhập Lại Mật khẩu
-                </label>
+              <input
+                type="password"
+                className="form_input"
+                id="form_password_repeat"
+                value={passReInput}
+                onInput={(e) => setPassReInput(e.target.value)}
+              ></input>
+              <label for="form_password_repeat" className="placeLabel">
+                Nhập Lại Mật khẩu
+              </label>
             </div>
 
             {/* <button className="btnLogin"
@@ -109,7 +123,7 @@ const UserFormRegister = (props) => {
             }>
               Đăng ký
             </button> */}
-            <Button index={1} text='Đăng ký' full/>
+            <Button index={1} text="Đăng ký" full />
 
             <div className="login_form_help">
               <div className="member">
@@ -124,10 +138,7 @@ const UserFormRegister = (props) => {
         </div>
         <div className="home_login_form_footer">
           <div className="home_login_signNow ">
-            <a
-              style={{display: 'block' }}
-              onClick={() => props.handleClick()}
-            >
+            <a style={{ display: 'block' }} onClick={() => props.handleClick()}>
               Đăng nhập ngay
             </a>
             .
@@ -135,7 +146,7 @@ const UserFormRegister = (props) => {
         </div>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default UserFormRegister
+export default UserFormRegister;

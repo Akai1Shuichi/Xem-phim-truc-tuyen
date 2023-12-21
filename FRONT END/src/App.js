@@ -1,7 +1,13 @@
 import { React, useState, useEffect, createContext } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import axiosMovieAppAPI from '../src/services/axiosMovieAppAPI';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from 'react-router-dom';
+import axiosMovie from '../src/services/axiosMovieAppAPI';
 import LoginPage from './screen/loginPage';
 import MainPage from './screen/mainPage';
 import InforUserPage from './screen/inforUserPage';
@@ -17,17 +23,18 @@ const App = () => {
   useEffect(() => {
     async function getUser(tk) {
       try {
-        const response = await axiosMovieAppAPI.get('/you', {
+        const response = await axiosMovie.get('/you', {
           headers: { Authorization: `Bearer ${tk}` },
         });
         setUser(response.data);
 
-        const responseMovie = await axiosMovieAppAPI.get('/yourfavourite', {
+        const responseMovie = await axiosMovie.get('/yourFavourite', {
           headers: { Authorization: `Bearer ${tk}` },
         });
         setMovieFavourite(responseMovie.data);
       } catch (error) {
         console.log('Lỗi không get được token');
+        setToken('');
       }
     }
     if (token) {
@@ -54,7 +61,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/movie/:id"
+                path="/movie/:category"
                 element={
                   <UserContext.Provider value={user}>
                     <MoviePage />

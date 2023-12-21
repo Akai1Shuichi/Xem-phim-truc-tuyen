@@ -6,28 +6,35 @@ const movieFavouriteController = require('../controller/movieFavouriteController
 
 // Add Movie Favourite
 movieFavouriteRouter.post(
-  '/addfavourte',
+  '/yourFavourite',
   auth,
   movieFavouriteController.addMovieFavourtie
 );
 
 // Get Movies Favourite
 movieFavouriteRouter.get(
-  '/yourfavourite',
+  '/yourFavourite',
   auth,
   movieFavouriteController.getMovieAllFavourite
 );
 
 // Get Movie Favourite
 movieFavouriteRouter.get(
-  '/yourfavourite/:id',
+  '/yourFavourite/:id_movie',
   auth,
   movieFavouriteController.getMovieFavourite
 );
 
+// Update Movie Favourite
+movieFavouriteRouter.patch(
+  '/yourFavourite/:id',
+  auth,
+  movieFavouriteController.updateMovieFavourite
+);
+
 // Delete movie
 movieFavouriteRouter.delete(
-  '/yourfavourite/:id',
+  '/yourFavourite/:id',
   auth,
   movieFavouriteController.removeMovieFavourite
 );
