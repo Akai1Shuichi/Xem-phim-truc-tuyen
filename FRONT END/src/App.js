@@ -50,7 +50,7 @@ const App = () => {
         <div>
           <BrowserRouter>
             <Routes>
-              <Route path="/home" element={<MainPage />} />
+              <Route path="/home" element={<MainPage setToken={setToken} />} />
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route
                 path="/info-user"

@@ -40,12 +40,18 @@ const InforUserContent = () => {
       myMovie.classList.remove('hidden');
     }
   };
-
+  const handleLogout = async () => {
+    await axiosMovieAppAPI.post('/logout', null, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    setToken('');
+    window.location.reload();
+  };
   return (
     <div className="infor-user-content-container">
       <div className="infor-user-content-title">
         <i class="fa fa-arrow-left" onClick={() => navigate(-1)}></i>
-        <Button index={1} text={'Đăng xuất'} />
+        <Button index={1} text={'Đăng xuất'} onClick={handleLogout} />
         <div style={{ clear: 'both' }}></div>
         <Line h={3} />
       </div>
