@@ -1,5 +1,7 @@
 import { React, useState } from 'react';
 import Button from '../../UI/button/button';
+import Swal from 'sweetalert2';
+
 async function loginUser(user) {
   return fetch('http://localhost:8080/login', {
     method: 'POST',
@@ -9,6 +11,7 @@ async function loginUser(user) {
     body: JSON.stringify(user),
   }).then((data) => data.json());
 }
+
 const UserFormLogin = ({ setToken, handleClick }) => {
   const [mailInput, setMailInput] = useState('');
   const [passInput, setPassInput] = useState('');
@@ -19,9 +22,35 @@ const UserFormLogin = ({ setToken, handleClick }) => {
       password: passInput,
     };
     const response = await loginUser(userInput);
-    // console.log(response)
-    const { token } = response;
-    setToken({ token });
+
+    if (response.message === 'Tài khoản hoặc mật khẩu không chính xác !!!') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${response.message}`,
+      });
+      return;
+    }
+
+    if (response.message === 'Login successfully !!!') {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'Đăng nhập thành công !!!',
+      });
+      const { token } = response;
+      setToken({ token });
+    }
   };
   return (
     <div className="home_login_body">
