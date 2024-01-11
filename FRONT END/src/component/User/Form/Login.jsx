@@ -32,7 +32,7 @@ const UserFormLogin = ({ setToken, handleClick }) => {
       return;
     }
 
-    if (response.message === 'Login successfully !!!') {
+    if (response.message === 'Đăng nhập thành công !!!') {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -44,11 +44,13 @@ const UserFormLogin = ({ setToken, handleClick }) => {
           toast.onmouseleave = Swal.resumeTimer;
         },
       });
+
       Toast.fire({
         icon: 'success',
         title: 'Đăng nhập thành công !!!',
       });
       const { token } = response;
+      console.log('🚀  handleSubmit  token', token);
       setToken({ token });
     }
   };

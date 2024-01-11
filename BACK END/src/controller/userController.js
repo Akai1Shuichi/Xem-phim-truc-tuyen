@@ -22,7 +22,7 @@ const userController = {
       const user = req.body;
       // check email is validator
       if (!validator.isEmail(user.email)) {
-        res.status(400).send({ message: 'Invalid email format !!!' });
+        res.status(400).send({ message: 'Định dạng mail không hợp lệ !!!' });
         return;
       }
 
@@ -33,13 +33,16 @@ const userController = {
       );
       if (email) {
         // error client
-        res.status(400).send({ message: 'This is email is already use!!!' });
+        res.status(400).send({ message: 'Email đã tồn tại !!!' });
         return;
       }
 
-      /* BLIND SQL INJECTION */
-      // // encrypt password
+      // /* Phòng thủ tấn công BLIND SQL INJECTION */
+
+      // /* ---------------------------------- */
+      // /* encrypt password */
       // user.password = await bcrypt.hash(user.password, 8);
+      // /* ---------------------------------- */
 
       // insert
       await queryRow('INSERT INTO user SET ?', user);
@@ -52,8 +55,7 @@ const userController = {
       const token = await generateAuthToken(user2);
       await queryRow('INSERT INTO token SET ?', { id_user: user2.id, token });
       // thong bao thanh cong
-      res.status(201).send({ message: 'Insert successfully !!!!', token });
-      // res.status(201).send({ message: 'Insert successfully !!!!' });
+      res.status(201).send({ message: 'Đăng ký thành công !!!!', token });
     } catch (e) {
       res.status(500).send({ message: e.message });
     }
@@ -61,6 +63,8 @@ const userController = {
 
   login: async (req, res) => {
     try {
+      // /* Phòng chống tấn công BLIND SQL INJECTION */
+
       // // check email exist
       // const user = await queryRow(
       //   'SELECT * FROM user WHERE email = ?',
@@ -74,6 +78,7 @@ const userController = {
       // }
       // // check password
       // const isMatch = await bcrypt.compare(req.body.password, user.password);
+
       // if (!isMatch) {
       //   res
       //     .status(400)
@@ -88,7 +93,9 @@ const userController = {
       // const token = await generateAuthToken(user2);
       // await queryRow('INSERT INTO token SET ?', { id_user: user2.id, token });
       // res.status(201).send({ message: 'Đăng nhập thành công !!!', token });
+
       /* BLIND SQL INJECTION */
+
       const email = req.body.email;
       let pass = req.body.password;
       // pass = `' OR 1=1 LIMIT 1,1;-- `;
@@ -98,10 +105,9 @@ const userController = {
       if (!user2) {
         throw new Error('Tài khoản hoặc mật khẩu không chính xác !!!');
       }
-      // res.status(201).send(user2);
       const token = await generateAuthToken(user2);
       await queryRow('INSERT INTO token SET ?', { id_user: user2.id, token });
-      res.status(201).send({ message: 'Login successfully !!!', token });
+      res.status(201).send({ message: 'Đăng nhập thành công !!!', token });
     } catch (e) {
       res.status(500).send({ message: e.message });
     }

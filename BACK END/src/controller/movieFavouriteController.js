@@ -37,10 +37,18 @@ const movieFavouriteController = {
   //  get movie
   getMovieFavourite: async (req, res) => {
     try {
+      // /* Phòng chống tấn công BLIND SQL INJECTION */
+
+      // const sql = `SELECT movieInteractions.*, movie.id_movie, movie.id
+      //   FROM movieInteractions
+      //   INNER JOIN movie ON movieInteractions.id_movie = movie.id WHERE movieInteractions.id_user = ? AND movieInteractions.love = 1 AND movie.id_movie = ? LIMIT 1`;
+      // const movie = await queryRow(sql, [req.user.id, req.params.id_movie]);
+
+      /* tấn công BLIND SQL INJECTION */
       const sql = `SELECT movieInteractions.*, movie.id_movie, movie.id
-        FROM movieInteractions
-        INNER JOIN movie ON movieInteractions.id_movie = movie.id WHERE movieInteractions.id_user = ? AND movieInteractions.love = 1 AND movie.id_movie = ? LIMIT 1`;
-      const movie = await queryRow(sql, [req.user.id, req.params.id_movie]);
+      FROM movieInteractions
+      INNER JOIN movie ON movieInteractions.id_movie = movie.id WHERE movieInteractions.id_user = '${req.user.id}' AND movieInteractions.love = 1 AND movie.id_movie = '${req.user.id}' LIMIT 1`;
+      const movie = await queryRow(sql);
 
       if (!movie) {
         res.status(404).send({ message: 'Khong tim thay movie !!!' });

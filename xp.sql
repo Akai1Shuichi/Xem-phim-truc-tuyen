@@ -46,3 +46,6 @@ Create table `movieInteractions`(
 	foreign key (`id_movie`)
      references `movie`(`id`)
 );
+
+SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=1;
